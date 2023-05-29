@@ -60,6 +60,28 @@ app.get(`${apiPrefix}tours/:id`, (req, res) => {
   })
 })
 
+// for updating a tour
+// but it does not work completely
+// as it will be implemented when we will connect the db
+app.patch(`${apiPrefix}tours/:id`, (req, res) => {
+  const id = Number(req.params.id)
+  const tour = tours.find((tour) => tour.id === id)
+
+  if (!tour) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID!',
+    })
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: '<updated tour here>',
+    },
+  })
+})
+
 const port = 3000
 
 app.listen(port, () => {
