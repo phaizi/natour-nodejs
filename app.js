@@ -40,26 +40,6 @@ app.post(`${apiPrefix}tours`, (req, res) => {
   )
 })
 
-// for getting a particular tour
-app.get(`${apiPrefix}tours/:id`, (req, res) => {
-  const id = Number(req.params.id)
-  const tour = tours.find((tour) => tour.id === id)
-
-  if (!tour) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID!',
-    })
-  }
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tour,
-    },
-  })
-})
-
 const port = 3000
 
 app.listen(port, () => {
